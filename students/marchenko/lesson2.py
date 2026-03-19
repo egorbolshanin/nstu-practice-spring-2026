@@ -46,7 +46,7 @@ class LogisticRegression:
         y_prediction = self.predict(x)
         eps = np.finfo(float).eps
         y_prediction = np.clip(y_prediction, eps, 1 - eps)
-        return float(-np.sum(y * np.log(y_prediction) + (1 - y) * np.log(1 - y_prediction)))
+        return float(-np.mean(y * np.log(y_prediction) + (1 - y) * np.log(1 - y_prediction)))
 
     def metric(self, x: np.ndarray, y: np.ndarray) -> float:
         y_prediction = self.predict(x) >= 0.5
